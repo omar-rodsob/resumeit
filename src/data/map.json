@@ -1,0 +1,157 @@
+{
+    "name": "Tools",
+    "children": [
+        {
+            "name": "Development Tools",
+            "free": true,
+            "description": "Development Tools",
+            "children": [
+                {
+                    "name": "Front End Tools",
+                    "description": "Front End Tools",
+                    "free": true,
+                    "children": [
+                        {
+                            "name": "React",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "react native",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "Redux toolkit",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "Nodejs",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "Jquery",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "Electronjs",
+                            "description": "Electronjs",
+                            "free": true
+                        }
+                    ]
+                },
+                {
+                    "name": "Back End Tools",
+                    "description": "React",
+                    "free": true,
+                    "children": [
+                        {
+                            "name": "NodeJs",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "restfull api",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "php",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "java",
+                            "description": "React",
+                            "free": true
+                        }
+                    ]
+                }
+            ]
+        },
+                {
+                    "name": "CI/CD Tools",
+                    "description": "React",
+                    "free": true,
+                    "children": [
+                        {
+                            "name": "Git",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "GitLab",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "GitHub",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "PipeLines",
+                            "description": "React",
+                            "free": true
+                        }
+                    ]
+                },
+                {
+                    "name": "QA Tools",
+                    "description": "React",
+                    "free": true,
+                    "children": [
+                        {
+                            "name": "Cypress",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "PostMan",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "QTest",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "PlayWrigth",
+                            "description": "React",
+                            "free": true
+                        }
+                    ]
+                },
+                {
+                    "name": "Agile & Tools",
+                    "description": "React",
+                    "free": true,
+                    "children": [
+                        {
+                            "name": "Scrum",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "Kanban",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "Jira",
+                            "description": "React",
+                            "free": true
+                        },
+                        {
+                            "name": "Trello",
+                            "description": "React",
+                            "free": true
+                        }
+                    ]
+                }
+    ]
+}

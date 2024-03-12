@@ -1,0 +1,47 @@
+{
+   "bio":"I'm a self-motivated person with more than 10 years of experience focusing my career as a front end developer, working with cross functional teams in agile environments, keeping focus on both personal and team growth, working in close collaboration with business, designers and back end developers.",
+   "generalInfo":
+    {
+        "name": "Omar Rodriguez Soberanes",
+        "nationality": "Mexicano",
+        "location": "Guadalajara, mexico",
+        "phone": "6621393007",
+        "email": "omar.rodsob@gmail.com",
+        "speak": ["Espaniol Nativo","Ingles Negocios"],
+        "pages":["https://www.linkedin.com/in/omarrodsob/","https://github.com/omar-rodsob","https://linktr.ee/"]
+    },
+    "experience":[{
+        "nameCorp":"HCL Mexico",
+        "location":"Guadalajara Jalisco",
+        "dates":"September 2017 to December 2023",
+        "positionName":"Front End Developer.",
+        "info": "Our main job was to maintain 3 of our own applications, related to inventory, logistics and the workplace, these applications were developed in react consuming restful api that were in java hibernate. In relation to the backend, my experience is limited, I have worked with Java superficially, and with Nodejs at a more intermediate level. Work on the front end of applications based on business needs.\n\n ● Migrations of two projects from javascript to typescript. ● Maintaining a restful api in nodejs ● Working on the migration of several front end projects from openshift to aws ● Working on the migration of several restful api projects from openshift 3 to 4 ● Working on the migration of several restful api projects from hibernate to Springboot. ● As far as databases are concerned, I have experience in mysql and postgres."
+    },
+    {
+        "nameCorp":"Korsoftocorp",
+        "location":"Hermosillo sonora",
+        "dates":"October 2013 to August 2017.",
+        "positionName":"Front End Developer.",
+        "info": "Support the team with the activities related to the front-end team, taking the duties to resolve both technical and business problems, helping management the releases of the applications in AppStore and playstore, making sure that we are on date with the requirements from both platforms, we launched 3 hybrid apps, one in Córdoba and two in react native, in addition to this, we maintain a fourth that was build in appcelerator. Projects Resume: We develop an app for the management of soccer football coaches taking control of the teams, games schedules,, players organization, and maintain communication with parents, was made in the first instance in Córdoba with ionic, and PHP on the back end side working with rest APIs maintained on aws cloud servers. Tools: Córdova, ionic, AppStore, playstore, GitHub, postman. Another app was to keep control of the maintenance activities for a college, keeping track of tasks on all floors, scheduled new activities, assigning duties, and track the activities by status, we have an admin portal build in php and one app on ios where the workers can see his activities, change the status . Tools: react native, redux, AppStore, playstore, GitHub, postman, aws."
+    },
+    {
+        "nameCorp":" Internet Brands.",
+        "location":"Guadalajara Jalisco",
+        "dates":"February 2012 to October 2013.",
+        "positionName":"Front End Developer.",
+        "info": "development and maintenance of various pages of the company as www.carsdirect.com, develop of the content delivery application for the hosting, management and visualization of images in www.davesgarden.com/showcase, organize and check the work of two more frontend devs, code reviews and helping in solutions to the problems, analyze the differents tools like bootstrap, angular, jquerymobile to conclude which is the best suited to the project or if is better has our own front end architecture"
+    },
+    {
+        "nameCorp":"quepasa.com",
+        "location":"Hermosillo sonora",
+        "dates":"October 2007 to January 2012.",
+        "positionName":"Front End Developer.",
+        "info": "front end team leader, in that job I have to my charge 4 co workers and the responsibility for his job,the communication with the project managers and designers, coordinated the schedule from front end team, verify the work meets with web standards like w3c standard, user interface,user experience and web usability, seo, make troubleshooting test, and formal testing and research about new technologies or tools for the sake of our projects, web analytics."
+    }
+    ],
+    "skills":{
+        "primary":["front end developer","web developer","hybrid mobile","developer","scrum master"],
+        "secundoary": ["Usability testing", "troubleshooting test", "Analyst Information","User experience", "testing (quality control)", "web analytics"],
+        "tools" : [ "javascript", "react"," react native", "redux", "lint", "enzyme", "npm","emacscript 6", "ajax", "jsp", "css", "html", "html5", "jquery mobile", "jquery", "node.js","app mobile delivery,","backbone", "html for mobile sites (responsive html)", "rest","web service", "json", "bootstrap", "couchdb", "dom manipulation php", "laravel","cordova", "phonegap", "titanium", "appcelerator", "hockeyapp", "testflight", "itunes","connect", "mysql", "workbrench", "moodle", "smarty", "velocity"]
+    }
+}
