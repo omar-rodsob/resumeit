@@ -29,7 +29,7 @@ export function Tree(
       haloWidth = 3, // padding around the labels
       curve = d3.curveBumpX, // curve for the link
       dyNode = 10 // vertical height of node
-    } = {}
+    }:any = {}
   ) {
     // If id and parentId options are specified, or the path option, use d3.stratify
     // to convert tabular data to a hierarchy; otherwise we assume that the data is
@@ -78,16 +78,18 @@ export function Tree(
   
     // Use the required curve
     if (typeof curve !== "function") throw new Error(`Unsupported curve`);
-  
-    const svg = d3
-      .create("svg")
+    //.call(d3.zoom().on("zoom", handleZoom))
+    //const svg = d3
+    var svg:any = d3.select('#dataMind')
+      .append('svg')
+      //.create("svg")
       .attr("viewBox", [(-dy * padding) / 2, x0 - dx, width, height])
       .attr("width", width)
       .attr("height", height)
       .attr("style", "max-width: 100%; height: auto; height: intrinsic;")
       .attr("font-family", "sans-serif")
-      .attr("font-size", 10)
-      .call(d3.zoom().on("zoom", handleZoom));
+      .attr("font-size", 10);
+      //.call(svg.zoom().on("zoom",handleZoom));
   
     svg
       .append("g")
@@ -130,14 +132,12 @@ export function Tree(
         .append("text")
         .attr("dy", "0.32em")
         .attr("x", (d:any) => (d.children ? -6 : 6))
-        .attr("text-anchor", (d) => (d.children ? "end" : "start"))
+        .attr("text-anchor", (d:any) => (d.children ? "end" : "start"))
         .attr("paint-order", "stroke")
         .attr("stroke", halo)
         .attr("stroke-width", haloWidth)
         .text((d:any, i:any) => L[i]);
-        function zoomed({transform}:any) {
-          g.attr("transform", transform);
-        }
-  
-    return svg.node();
+        
+   
+    //return svg.node();
   };

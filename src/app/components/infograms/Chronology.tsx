@@ -52,8 +52,8 @@ export default function Chronology() {
                 .append('svg')
                 .attr('class', 'svgmain')
                 .attr('width', svgWidth)
-                .attr('height', svgHeight)
-                .call(d3.zoom().on("zoom", handleZoom));
+                .attr('height', svgHeight);
+                //.call(svgs.zoom().on("zoom", handleZoom));
       //setSvg(svgs);
       dataset = cronJson;
       renderTheGraph(svgs);

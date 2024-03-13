@@ -2,8 +2,7 @@
 import React, { useRef, useEffect, useState } from "react";
 // libraries
 import * as d3 from "d3";
-// redux
-import { connect } from "react-redux";
+
 
 let radius = 360;
 
@@ -11,7 +10,7 @@ let padding = 5;
 
 let fillOpacity = 1;
 
-let fill;
+let fill:"#ccc";
 
 let linkTarget = '';
 
@@ -24,92 +23,101 @@ let marginTop = 10;
 export default function SkillGraph() {
     const data = {
         name: "Tools",
+        index:0,
         children: [
           {
             name: "Development",
+            index:0,
             children: [
               {
                 name: "Front End",
+                index:0,
                 children: [
                   { name: "React",
+                  index:0,
                    size: 1000,
                    children: [
-                    { name:"React", size: 10000, },
-                    { name:"React Native", size: 4938, },
-                    { name:"Redux TookKit", size: 5938, },
-                    { name:"Nextjs", size: 8000, }
+                    { name:"React",index:0, size: 10000, },
+                    { name:"React Native",index:0, size: 4938, },
+                    { name:"Redux TookKit",index:0, size: 5938, },
+                    { name:"Nextjs",index:0, size: 8000, }
                    ] 
                 },
-                  { name: "ElectronJs", size: 3812 },
+                  { name: "ElectronJs",index:0, size: 3812 },
                   { 
                     name: "HTML", 
+                    index:0,
                     size: 1000,
                     children: [
-                        { name:"CSS",size: 3938,},
-                        { name:"html5",size: 3938,}
+                        { name:"CSS",index:0,size: 3938,},
+                        { name:"html5",index:0,size: 3938,}
                        ] 
                 },
-                  { name: "Jquery", size: 3938 },
+                  { name: "Jquery",index:0, size: 3938 },
                 ],
               },
               {
                 name: "Back End",
+                index:0,
                 children: [
-                  { name: "Nodejs", size: 7840 },
-                  { name: "Restful API", size: 5731 },
-                  { name: "java", size: 3534 }
+                  { name: "Nodejs",index:0, size: 7840 },
+                  { name: "Restful API",index:0, size: 5731 },
+                  { name: "java",index:0, size: 3534 }
                 ],
               }
             ],
           },
           {
             name: "Agile Tools",
+            index:0,
             children: [
-              { name: "Scrum", size: 5000 },
-              { name: "Kanban", size: 5000 },
-              { name: "Jira", size: 5000, },
-              { name: "Trello", size: 5000 },
+              { name: "Scrum",index:0, size: 5000 },
+              { name: "Kanban",index:0, size: 5000 },
+              { name: "Jira",index:0, size: 5000, },
+              { name: "Trello",index:0, size: 5000 },
             ],
           },
           {
             name: "QA Tools",
+            index:0,
             children: [
-                {name: "Cypress",size: 10066 },
-                { name: "PostMan", size: 8833 },
-                { name: "PlayWrigth", size: 1732 },
-                { name: "QTest", size: 3623 }
+                {name: "Cypress",index:0,size: 10066 },
+                { name: "PostMan",index:0, size: 8833 },
+                { name: "PlayWrigth",index:0, size: 1732 },
+                { name: "QTest",index:0, size: 3623 }
               ],
           },
           {
             name: "CI/CD Tools",
+            index:0,
             children: [
-              { name: "git", size: 10066 },
-              { name: "gitLab", size: 8833 },
-              { name: "GitHub", size: 3623 },
-              { name: "PipeLines", size: 1732 },
+              { name: "git",index:0, size: 10066 },
+              { name: "gitLab",index:0, size: 8833 },
+              { name: "GitHub",index:0, size: 3623 },
+              { name: "PipeLines",index:0, size: 1732 },
             ],
           },
         ],
       };
  // Element References
  const svgRef = useRef(null);
- const svgContainer = useRef(null); // The PARENT of the SVG
+ const svgContainer = useRef<HTMLDivElement>(null); // The PARENT of the SVG
 
  // State to track width and height of SVG Container
  const [width, setWidth] = useState(800);
  const [height, setHeight] = useState(600);
 
- function handleZoom(e) {
+ /* function handleZoom(e) {
   d3.selectAll('a')
   .attr('transform', e.transform);
- }
+ }*/
 
  // calculate width and height of container
  const getSvgContainerSize = () => {
-   const newWidth = svgContainer.current.clientWidth;
+   const newWidth = svgContainer?.current?.clientWidth ? svgContainer.current.clientWidth:800;
    setWidth(newWidth);
 
-   const newHeight = svgContainer.current.clientHeight;
+   const newHeight = svgContainer?.current?.clientHeight ? svgContainer.current.clientHeight:800;
    setHeight(newHeight);
  };
 
@@ -126,56 +134,58 @@ export default function SkillGraph() {
  // draw chart
  useEffect(() => {
    // D3 Code
-   const root = d3.hierarchy(data);
+   const root:any = d3.hierarchy(data);
    
-   const valueAccessor = (d) => d.size;
+   const valueAccessor = (d:any) => d.size;
    valueAccessor == null
         ? root.count()
-        : root.sum((d) => Math.max(0, valueAccessor(d)));
+        : root.sum((d:any) => Math.max(0, valueAccessor(d)));
     // sort leaves by value
     
-    root.sort((a, b) => d3.descending(a.value, b.value));
+    root.sort((a:any, b:any) => d3.descending(a.value, b.value));
     // Dimensions
     let dimensions = {
         width: width,
         height: height,
         margins: 50,
+        radius:0,
     };
     dimensions.radius =
         Math.min(
-            dimensions.containerWidth,
-            dimensions.containerHeight
+            dimensions.width,
+            dimensions.height
         ) / 2;
     d3.partition().size([2 * Math.PI, radius])(root);
 
    
 
-   dimensions.containerWidth = dimensions.width - dimensions.margins * 2;
-   dimensions.containerHeight = dimensions.height - dimensions.margins * 2;
+   dimensions.width = dimensions.width - dimensions.margins * 2;
+   dimensions.height = dimensions.height - dimensions.margins * 2;
 
    // construct color scale
 const defaultFill = "#ccc"
 const colorScheme = d3.interpolateSpectral
+const childrenLength = root?.children?.length ? root?.children?.length:0;
 const color = d3
-  .scaleSequential([0, root.children.length - 1], colorScheme)
+  .scaleSequential([0, childrenLength - 1], colorScheme)
   .unknown(defaultFill);
 // give all children of root an identical index for coloration  
-root.children.forEach((child, i) => (child.index = i));
+root?.children?.forEach((child:any, i:number) => (child.index = i));
 
 const arc = d3.arc()
-  .startAngle(d => d.x0)
-  .endAngle(d => d.x1)
-  .padAngle(d => Math.min((d.x1 - d.x0) / 2, 2 * padding /  dimensions.radius))
+  .startAngle((d:any) => d.x0)
+  .endAngle((d:any) => d.x1)
+  .padAngle((d:any) => Math.min((d.x1 - d.x0) / 2, 2 * padding /  dimensions.radius))
   .padRadius(radius / 2)
-  .innerRadius(d => d.y0)
-  .outerRadius(d => d.y1 - padding);
+  .innerRadius((d:any) => d.y0)
+  .outerRadius((d:any) => d.y1 - padding);
 
 
-  const  link = (d, n) => n.children
-  ? `#`
-  : `#`
+  const  link = `#`;
   
-     const svg = d3.create("svg")
+     //const svg = d3.create("svg")
+     var svg:any = d3.select('#sunburst')
+      .append('svg')
      .attr("viewBox", [
         marginRight - marginLeft - width / 2,
         marginBottom - marginTop - height / 2,
@@ -188,8 +198,8 @@ const arc = d3.arc()
      .attr("font-family", "sans-serif")
      .attr("font-size", 10)
      .attr("text-anchor", "middle")
-    .attr("class", "zoomit")
-     .call(d3.zoom().on("zoom", handleZoom));
+    .attr("class", "zoomit");
+     //.call(svg.zoom().on("zoom", handleZoom));
     
  const cell = svg
   .selectAll("a")
@@ -198,13 +208,13 @@ const arc = d3.arc()
 
 cell.append("path")
     .attr("d", arc)
-    .attr("fill", color ? d => color(d.ancestors().reverse()[1]?.index) : fill)
+    .attr("fill", color ? (d:any) => color(d.ancestors().reverse()[1]?.index) : fill)
     .attr("fill-opacity", fillOpacity);
 
 
 
     // label is simply the given name  
-const labelAccessor = (d) => d.name
+const labelAccessor = (d:any) => d.name
 const label = labelAccessor  
 
 const node = svg
@@ -212,11 +222,11 @@ const node = svg
 if (label != null)
  cell
     // filter cells without room for label
-    .filter((d) => ((d.y0 + d.y1) / 2) * (d.x1 - d.x0) > 10)
+    .filter((d:any) => ((d.y0 + d.y1) / 2) * (d.x1 - d.x0) > 10)
     .append("text")
     .classed("sunburst-node-label", true)
     // rotate and position labels
-    .attr("transform", (d) => {
+    .attr("transform", (d:any) => {
       // except base node
      
       if (!d.depth) return;
@@ -227,19 +237,19 @@ if (label != null)
       })`;
     })
     .attr("dy", "0.32em")
-    .text((d) => label(d.data, d));
+    .text((d:any) => label(d.data));
 
 // title builder (title is hover text)    
-const title = (d, n) => `${n.ancestors().reverse().map(d => d.data.name).join(">")}\n${n.value.toLocaleString("en")}`
+const title = (d:any, n:any) => `${n.ancestors().reverse().map((d:any) => d.data.name).join(">")}\n${n.value.toLocaleString("en")}`
 // add title    
 
 if (title != null) {
-    cell.append("title").text((d) => {
+    cell.append("title").text((d:any) => {
         title(d.data, d)
     });
 } 
      
-    document.getElementById("estoyTonto")?.appendChild(svg.node());
+   // document.getElementById("estoyTonto")?.appendChild(svg.node());
   
 
    
@@ -268,7 +278,7 @@ if (title != null) {
 
   return (
     <div className="sunburst-chart-container">
-    <div ref={svgContainer} id="estoyTonto" className="sunburst-chart-svg-container">
+    <div ref={svgContainer} id="sunburst" className="sunburst-chart-svg-container">
       
     </div>
   </div>
