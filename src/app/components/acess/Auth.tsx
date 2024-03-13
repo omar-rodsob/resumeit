@@ -3,6 +3,7 @@ import { GetTemp } from "@/app/tools/sessions";
 import { sendEmail } from "@/app/api/email";
 import { FormEvent, useReducer, useState } from "react"
 import { useTranslation } from "react-i18next";
+import { sendGAEvent } from '@next/third-parties/google';
 
 
 export function Auth() {
@@ -28,10 +29,12 @@ export function Auth() {
        }
 
        function submitToken(e: FormEvent<HTMLFormElement>){
-         e.preventDefault();       
+         e.preventDefault();     
+           sendGAEvent({ event: 'submitToken', value: 'click' });
            const isToken =  checkToken(accessToken);
            setMatch(isToken);
            setSubmit(true);
+           sendGAEvent({ event: 'isToken', value: isToken });
            if (isToken){
             location.reload();
            } 
@@ -41,7 +44,9 @@ export function Auth() {
        async function SendToken(){
         setDisabledResent(true);
         const tempObj = GetTemp();
+        sendGAEvent({ event: 'resent', value: tempObj.email });
         const isSent = await sendEmail(tempObj);
+        sendGAEvent({ event: 'isSent', value: isSent });
         setResent(isSent);
        }
    return(

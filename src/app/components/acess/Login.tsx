@@ -2,6 +2,7 @@ import { createToken } from "@/app/tools/services";
 import {sendEmail} from "@/app/api/email";
 import { FormEvent, useState } from "react"
 import { useTranslation } from "react-i18next";
+import { sendGAEvent } from '@next/third-parties/google'
 
 type loginProps = {
     onSent: Function;
@@ -26,13 +27,16 @@ export function Login({onSent}: loginProps){
         e.preventDefault();
         let isSent = false;
         if (!isDisabled) {
+            sendGAEvent({ event: 'loginclick', value: emailGuest });
             setDisabled(true);
             const tokenObj = await createToken(emailGuest);
             const isSent = await sendEmail(tokenObj);
             if(isSent){
+                sendGAEvent({ event: 'emailSend', value: 'ok' });
                 onSent(isSent);
                 setError(false);    
             }else{
+                sendGAEvent({ event: 'emailSend', value: 'notok' });
                 setError(true);
                 setDisabled(false);
             }

@@ -8,13 +8,13 @@ type GuestSession = {
 }
 
 export function GetSession(){    
-    let GuestSession = sessionStorage.getItem("GuestSession");
+    let GuestSession = localStorage.getItem("GuestSession");
     const today = moment().calendar();    
     if (GuestSession){
         const objGuest = JSON.parse(GuestSession) ;
         const isExpired = moment().diff(objGuest?.expiresAt, 'days') > 0;
         if(isExpired){
-            sessionStorage.removeItem("GuestSession");  
+            localStorage.removeItem("GuestSession");  
             GuestSession = null;
         }
     }
@@ -30,7 +30,7 @@ export function SetSession(guestEmail: string){
             email: guestEmail
         }
     } 
-    sessionStorage.setItem('GuestSession', JSON.stringify(sessionObject));
+    localStorage.setItem('GuestSession', JSON.stringify(sessionObject));
 }
 
 export function SetTemp(guestEmail: string, token:number){
@@ -40,11 +40,11 @@ export function SetTemp(guestEmail: string, token:number){
         token: token,
         expiresAt: expires
     } 
-    sessionStorage.setItem('TempSession', JSON.stringify(sessionObject));
+    localStorage.setItem('TempSession', JSON.stringify(sessionObject));
 }
 
 export function GetTemp(){
-    const tempObj = sessionStorage.getItem("TempSession");
+    const tempObj = localStorage.getItem("TempSession");
     
     let TempSession = {
         token:0,
@@ -59,6 +59,6 @@ export function GetTemp(){
 }
 
 export function RemoveTemp(){
-    sessionStorage.removeItem("TempSession"); 
+    localStorage.removeItem("TempSession"); 
 }
 
