@@ -14,8 +14,8 @@ export function Tree(
       title, // given a node d, returns its hover text
       link, // given a node d, its link (if any)
       linkTarget = "_blank", // the target attribute for links (if any)
-      width = 640, // outer width, in pixels
-      height, // outer height, in pixels
+      width = 1000, // outer width, in pixels
+      height=900, // outer height, in pixels
       r = 3, // radius of nodes
       padding = 1, // horizontal padding for first and last column
       fill = "#999", // fill for nodes
@@ -78,18 +78,15 @@ export function Tree(
   
     // Use the required curve
     if (typeof curve !== "function") throw new Error(`Unsupported curve`);
-    //.call(d3.zoom().on("zoom", handleZoom))
-    //const svg = d3
     var svg:any = d3.select('#dataMind')
       .append('svg')
-      //.create("svg")
       .attr("viewBox", [(-dy * padding) / 2, x0 - dx, width, height])
       .attr("width", width)
       .attr("height", height)
       .attr("style", "max-width: 100%; height: auto; height: intrinsic;")
       .attr("font-family", "sans-serif")
-      .attr("font-size", 10);
-      //.call(svg.zoom().on("zoom",handleZoom));
+      .attr("font-size", 10)
+      .call(d3.zoom().on("zoom",handleZoom) as any);
   
     svg
       .append("g")
@@ -137,7 +134,4 @@ export function Tree(
         .attr("stroke", halo)
         .attr("stroke-width", haloWidth)
         .text((d:any, i:any) => L[i]);
-        
-   
-    //return svg.node();
   };

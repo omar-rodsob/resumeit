@@ -6,8 +6,8 @@ import cronJson from '@/data/cron.json';
 
 const ArrayOfTitles = ['HCL','KORSOFT','Internet Brands','Quepasa.com'];
 
-var svgHeight = 500;
-var svgWidth = 1300;
+var svgHeight = 200;
+var svgWidth = 1500;
 var paddingH = 50;
 var paddingV = 50;
 
@@ -24,15 +24,9 @@ var dataset:any = undefined;
 var xScale:any, yScale:any;
 
 export default function Chronology() {
-  //const [svg, setSvg] = useState<SVGSVGElement>();
-  //const xAxisRef = useRef();
-  //const yAxisRef = useRef();
-
   function handleZoom(e: any) {
-    d3.selectAll('.svgmain')
+    d3.select('.svgmain')
     .attr('transform', e.transform);
-    /*  d3.select('svg g.zoomit2')
-    .attr('transform', e.transform); */
    }
 
   function setScales ( ) {
@@ -52,15 +46,14 @@ export default function Chronology() {
                 .append('svg')
                 .attr('class', 'svgmain')
                 .attr('width', svgWidth)
-                .attr('height', svgHeight);
-                //.call(svgs.zoom().on("zoom", handleZoom));
-      //setSvg(svgs);
+                .attr('height', svgHeight)
+                .call(d3.zoom().on('zoom', handleZoom) as any);
       dataset = cronJson;
       renderTheGraph(svgs);
       function renderTheGraph(svg:any) {
 
         setScales();
-        var rect = svg.selectAll('rect')
+        var rect:any = svg.selectAll('rect')
           .data(dataset)
           .enter()
           .append('rect');
@@ -69,15 +62,12 @@ export default function Chronology() {
         .attr('x', function ( d: cronType ) {
           return  xScale(new Date(d.startdate));
         })
-        .attr('y',360)
+        .attr('y',60)
         .attr('rx',5)
         .attr('ry',5)
         .attr('fill', function ( d: cronType, i=0 ) {
           return i % 2 ? "#2a3463" : "#111f66";
         })
-         /* .attr('stroke', function (d) {
-            return 'rgba(' + (colorXScale(d.x) + colorYScale(d.y)) / 2+ "," + 0 + "," + 0 + ', '+ d.weight+')';
-          })*/
           .attr('width' , function ( d:cronType ) {
             const width = xScale(new Date(d.duedate))-xScale(new Date(d.startdate));
             return width-10;
@@ -101,7 +91,7 @@ export default function Chronology() {
           .attr('x', function ( d: cronType ) {;
             return  xScale(new Date(d.startdate))+5;
           })
-          .attr('y', 380)
+          .attr('y', 80)
           .attr('font-size', 11)
           .attr('fill', 'white');
 
@@ -115,7 +105,7 @@ export default function Chronology() {
           .attr('x', function ( d: cronType ) {;
             return  xScale(new Date(d.startdate));
           })
-          .attr('y', 350)
+          .attr('y', 50)
           .attr('font-size', 11)
           .attr('id', function ( d: cronType ) {
             return d.title;
@@ -136,7 +126,6 @@ export default function Chronology() {
  
     return (
       <div id="grapg">
-        
       </div>
     );
   }

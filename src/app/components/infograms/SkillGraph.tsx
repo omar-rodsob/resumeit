@@ -104,13 +104,13 @@ export default function SkillGraph() {
  const svgContainer = useRef<HTMLDivElement>(null); // The PARENT of the SVG
 
  // State to track width and height of SVG Container
- const [width, setWidth] = useState(800);
- const [height, setHeight] = useState(600);
+ const [width, setWidth] = useState(1500);
+ const [height, setHeight] = useState(800);
 
- /* function handleZoom(e) {
+ function handleZoom(e: any) {
   d3.selectAll('a')
   .attr('transform', e.transform);
- }*/
+ }
 
  // calculate width and height of container
  const getSvgContainerSize = () => {
@@ -198,8 +198,8 @@ const arc = d3.arc()
      .attr("font-family", "sans-serif")
      .attr("font-size", 10)
      .attr("text-anchor", "middle")
-    .attr("class", "zoomit");
-     //.call(svg.zoom().on("zoom", handleZoom));
+    .attr("class", "zoomit")
+    .call(d3.zoom().on('zoom', handleZoom) as any);
     
  const cell = svg
   .selectAll("a")
