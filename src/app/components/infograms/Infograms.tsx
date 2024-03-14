@@ -27,7 +27,7 @@ export default function InfoGrams() {
 	const openSkills = () => setOpenSkill(true);
   	const closeSkills = () => setOpenSkill(false);
   return (
-    <div className="p-5 bg-module p-5 rounded border-borderColor border-2 m-2"> 
+    <div className="p-5 bg-module p-5 rounded border-borderColor border-2 m-2 data-step"> 
 	  <Button onClick={openCron}>{t('infograms.cron')}<ViewTimelineIcon/></Button>	  
 		<Modal
 			open={openCronBln}

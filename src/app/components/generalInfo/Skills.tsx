@@ -15,7 +15,7 @@ export default function GeneralInfo() {
     const { i18n, t } = useTranslation();
   return (
     <>
-    <div className="p-5 bg-subHeader rounded border-borderColor m-2 min-h-20">
+    <div className="p-5 bg-subHeader rounded border-borderColor m-2 min-h-20 skills-step">
     <h1 className="text-2xl font-bold text-slate-100">{t('skills')}</h1>
     </div>
     <div className="justify-between bg-module p-5 rounded border-borderColor border-2 m-2">

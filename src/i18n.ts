@@ -12,6 +12,7 @@ i18n.use(initReactI18next).init({
             translation: {
                 title: 'Multi-language app',
                 bio: 'Intro',
+                recent:'Recent Technologies',
                 showLess: 'Show Less',
                 showMore: 'Show More',
                 exp: 'Experience',
@@ -56,6 +57,7 @@ i18n.use(initReactI18next).init({
             translation: {
                 title: 'Aplicación en varios idiomas',
                 bio: 'Intro',
+                recent:'Tecnologías',
                 showLess: 'Mostrar Menos',
                 showMore: 'Mostrar Más',
                 exp: 'Experiencia Laboral',

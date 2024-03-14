@@ -4,15 +4,17 @@ import Skills from "../generalInfo/Skills";
 import Infograms from "../infograms/Infograms";
 import Introduction from "../introduction/Introduction";
 
+
+  
 export default function Skeleton() {
   return (
     <>
+    <div> </div>
   <div className="introduction p-5">
         <Introduction />
   </div>
     <div className="general flex min-h-screen">
         <div className="experience w-9/12">
-          <h1></h1>
           <Experience />
           <div className="extraInfo min-h-40">
             <Infograms />

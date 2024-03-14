@@ -62,3 +62,22 @@ export function RemoveTemp(){
     localStorage.removeItem("TempSession"); 
 }
 
+export function SetTour(){
+    var sessionObject = {
+        saw:true
+    } 
+    localStorage.setItem('tourSession', JSON.stringify(sessionObject));
+}
+
+export function GetSessionTour(){
+    const tempObj = localStorage.getItem("tourSession");
+    
+    let TempSession = {
+        saw:false
+    }
+    if(tempObj){
+        TempSession = JSON.parse(tempObj);
+    }
+    
+    return TempSession;
+}

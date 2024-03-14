@@ -25,7 +25,7 @@ export const Menu = () => {
       setShowPhone(!phoneBln);
      }
   return (
-    <nav className="bg-main p-5 rounded border-borderColor m-2 min-h-05 flex">
+    <nav className="bg-main p-5 rounded border-borderColor m-2 min-h-05 flex nav-step">
       <h4 className="text-2xl font-bold text-slate-100">Omar Rodriguez Soberanes</h4>
       <div className="w-52">
         <a href="/omarrodriguez.pdf" target="blank" className="m-1"><FileDownloadIcon sx={{color:'white'}}/></a>
