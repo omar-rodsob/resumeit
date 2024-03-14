@@ -1,8 +1,6 @@
 "use client"
 import { Popover, Typography } from "@mui/material";
 import React from "react";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
 
 type toolProp = {
     tool:{
@@ -29,7 +27,7 @@ export default function PopInfo(tool:toolProp) {
         aria-haspopup="true"
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
-        className="m-1 inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10"
+        className="cursor-pointer m-1 inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10"
       >
        {tool.tool.name}
       </Typography>

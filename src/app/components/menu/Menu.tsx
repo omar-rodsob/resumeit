@@ -8,9 +8,6 @@ import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import { ButtonBase } from "@mui/material";
 import { useState } from "react";
 
-
-
-const isActive = ({ isActive }: any) => `link ${isActive ? "active" : ""}`;
 const phoneNumber = '6621393007';
 
 export const Menu = () => {

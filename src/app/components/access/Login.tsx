@@ -2,7 +2,7 @@ import { createToken } from "@/app/tools/services";
 import {sendEmail} from "@/app/api/email";
 import { FormEvent, useState } from "react"
 import { useTranslation } from "react-i18next";
-import * as gtag from "@/app/tools/gtag";
+import { SvgLoading } from "./SvgLoading";
 
 type loginProps = {
     onSent: Function;
@@ -13,6 +13,8 @@ export function Login({onSent}: loginProps){
     const [isDisabled, setDisabled] = useState<boolean>(true);
     const [emailGuest, setEmail] = useState<string>('');
     const [error, setError] = useState<boolean>(false);
+    const [countSub, setCount] = useState<number>(0);
+    const [isLoading, setLoading] = useState<boolean>(false);
 
     function addEmail(e : React.ChangeEvent<HTMLInputElement>){
         const regExEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -26,18 +28,18 @@ export function Login({onSent}: loginProps){
     async function submitEmail(e: FormEvent<HTMLFormElement>){
         e.preventDefault();
         let isSent = false;
-        if (!isDisabled) {
-           const valGA = emailGuest.substring(0, emailGuest.indexOf("@"));
-            gtag.event({ action: "loginclick",category:"login",label:"submit email", value: valGA });
+        setLoading(true);
+        if (!isDisabled && countSub===0) {
             setDisabled(true);
+            setCount(1);
             const tokenObj = await createToken(emailGuest);
             const isSent = await sendEmail(tokenObj);
             if(isSent){
-                gtag.event({ action: "emailSend",category:"login",label:"is sent", value: 'ok' });
+                setCount(0);
                 onSent(isSent);
                 setError(false);    
             }else{
-                gtag.event({ action: "emailSend",category:"login",label:"is sent", value: 'not ok' });
+                setCount(0);
                 setError(true);
                 setDisabled(false);
             }
@@ -61,7 +63,10 @@ export function Login({onSent}: loginProps){
                         </div>
                     </div>
                     <div className="mt-6 flex items-center justify-end gap-x-6">
-                            <button type="submit" className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" disabled={isDisabled}>{t('auth.btnToken')}</button>
+                        <button type="submit" className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" disabled={isDisabled}>
+                           {isLoading ? (<SvgLoading />):("")}
+                            {t('auth.btnToken')}
+                        </button>
                     </div>
                 </div>
             </form>

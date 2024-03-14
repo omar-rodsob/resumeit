@@ -6,11 +6,8 @@ import Footer from "./components/resumeitdata/Footer";
 import { Menu } from './components/menu/Menu';
 import {GetSession,GetSessionTour} from '@/app/tools/sessions';
 import { useEffect, useState } from "react";
-import {Access} from '@/app/components/acess/SiteAccess';
-
-import CircularProgress from '@mui/material/CircularProgress';
+import {Access} from '@/app/components/access/SiteAccess';
 import Box from '@mui/material/Box';
-import { ClassNames } from "@emotion/react";
 
 const Tour = dynamic(
   () => import('../app/tools/Tour'),

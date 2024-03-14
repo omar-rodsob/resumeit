@@ -32,6 +32,9 @@ i18n.use(initReactI18next).init({
                     links: 'Links',
                 },
                 skills:'Skills',
+                profileMain: 'Main Profile',
+                profileSecond: 'Complementary Profile',
+                profileTools: 'Tools',
                 infograms:{
                     cron:'Chronology',
                     mind: 'Data Tree',
@@ -77,6 +80,9 @@ i18n.use(initReactI18next).init({
                     links: 'Enlaces',
                 },
                 skills:"Habilidades",
+                profileMain: 'Perfil Principal',
+                profileSecond: 'Perfil complementario',
+                profileTools: 'Herramientas',
                 infograms:{
                     cron:'Cronologia',
                     mind: 'Herramientas',
@@ -84,14 +90,14 @@ i18n.use(initReactI18next).init({
                 },
                 auth:{
                     firstMessage:'Para acceder a este sitio necesitas un token que será enviado a tu correo electrónico',
-                    email:'correo electrónico',
+                    email:'Correo electrónico',
                     btnToken: 'Enviar Token',
                     authMessage: 'Token enviado, revisa tu correo',
                     addToken: 'Agregar Token',
                     accessBtn: 'Acceder',
                     noEmailMessage: 'No recibiste el token?',
-                    reSentButton: 'reenviar token',
-                    errorMistMatch: 'El token no es correcto, intentalo de nuevo',
+                    reSentButton: 'Reenviar token',
+                    errorMistMatch: 'El token no es correcto, inténtalo de nuevo',
                     errorSending: 'Tuvimos un error al mandar tu token, favor de intentarlo de nuevo',
                     resentMessage: 'Token reenviado, checa tu correo'
                 }

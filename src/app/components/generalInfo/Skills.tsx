@@ -19,7 +19,7 @@ export default function GeneralInfo() {
     <h1 className="text-2xl font-bold text-slate-100">{t('skills')}</h1>
     </div>
     <div className="justify-between bg-module p-5 rounded border-borderColor border-2 m-2">
-        <h4 className="text-lg font-bold dark:text-white">Main</h4>
+        <h4 className="text-lg font-bold dark:text-white">{t('profileMain')}</h4>
         <div className="skillMain">
         {toolsObj.main.map((main)=>
                     <span className="m-1 inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10" key={main}>{main}</span>
@@ -27,7 +27,7 @@ export default function GeneralInfo() {
         </div>
     </div>
     <div className="justify-between bg-module p-5 rounded border-borderColor border-2 m-2">
-        <h4 className="text-lg font-bold dark:text-white">Second</h4>
+        <h4 className="text-lg font-bold dark:text-white">{t('profileSecond')}</h4>
         <div className="skillTools">
         {toolsObj.main.map((tools)=>
                     <span className="m-1 inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10" key={tools}>{tools}</span>
@@ -35,7 +35,7 @@ export default function GeneralInfo() {
         </div>
     </div>
     <div className="justify-between bg-module p-5 rounded border-borderColor border-2 m-2 ">
-        <h4 className="text-lg font-bold dark:text-white">Tools</h4>
+        <h4 className="text-lg font-bold dark:text-white">{t('profileTools')}</h4>
         <div className="skillSecond">
         {toolsObj.tools.map((tool)=>
                     <span className="m-1 inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10" key={tool}>{tool}</span>

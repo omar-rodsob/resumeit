@@ -248,32 +248,6 @@ if (title != null) {
         title(d.data, d)
     });
 } 
-     
-   // document.getElementById("estoyTonto")?.appendChild(svg.node());
-  
-
-   
-  /* cell.append("path")
-       .attr("d", arc)
-       .attr("fill", color ? d => color(d.ancestors().reverse()[1]?.index) : fill)
-       .attr("fill-opacity", fillOpacity); */
- 
-   // clear all previous content on refresh
-   /*const everything = svg.selectAll("*");
-   everything.remove();
-
-   const container = svg
-     .append("g")
-     .classed("sunburst-chart-inner-container", true)
-     .attr(
-       "transform",
-       `translate(${dimensions.margins}, ${dimensions.margins})`
-     );*/
-
-   // rest of d3 code ...
-
-   // const someElement = container.append('g')
-   //  ...
  }, []); // redraw chart if data or dimensions change // redraw chart if data or dimensions change
 
   return (
