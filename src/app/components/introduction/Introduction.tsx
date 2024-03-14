@@ -50,10 +50,12 @@ export default function Skeleton() {
       <h1 className="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200">
         {t("bio")}
         </h1>
-        <p className="text-balance whitespace-break-spaces">{showMore ? introObj.intro : `${introObj.intro.substring(0, 450)}`}</p>
-        {stringLength>450 ? (
-           <button className="m-1 bg-subHeader  relative inline-flex items-center rounded-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0" onClick={() => setShowMore(!showMore)}>{showMore ? `${t("showLess")}` : `${t("showMore")}`}</button>
+        <p className="text-balance whitespace-break-spaces">{showMore ? introObj.intro : `${introObj.intro.substring(0, 500)+ '...'}`}
+        {stringLength>500 ? (
+           <button className="outline-none mr-1 mb-1 px-3 py-1 bg-transprent text-xs text-blue-500 uppercase focus:outline-none" onClick={() => setShowMore(!showMore)}>{showMore ? `${t("showLess")}` : `${t("showMore")}`}</button>
         ):(null)}
+        </p>
+        
         <div className="skillTools mt-2">
         <h1 className="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200 mb-2">
           {t("recent")}</h1>
