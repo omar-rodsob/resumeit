@@ -3,7 +3,8 @@ import { GetTemp } from "@/app/tools/sessions";
 import { sendEmail } from "@/app/api/email";
 import { FormEvent, useReducer, useState } from "react"
 import { useTranslation } from "react-i18next";
-import { sendGAEvent } from '@next/third-parties/google';
+//import { sendGAEvent } from '@next/third-parties/google';
+import * as gtag from "@/app/tools/gtag";
 
 
 export function Auth() {
@@ -30,11 +31,13 @@ export function Auth() {
 
        function submitToken(e: FormEvent<HTMLFormElement>){
          e.preventDefault();     
-           sendGAEvent({ event: 'submitToken', value: 'click' });
+           //sendGAEvent({ event: 'submitToken', value: 'click' });
+           gtag.event({ action: "submitToken",category:"auth",label:"token", value: 'click' });
            const isToken =  checkToken(accessToken);
            setMatch(isToken);
            setSubmit(true);
-           sendGAEvent({ event: 'isToken', value: isToken });
+           //sendGAEvent({ event: 'isToken', value: isToken });
+           gtag.event({ action: "isToken",category:"auth",label:"token", value: isToken ? 'ok':'not ok' });
            if (isToken){
             location.reload();
            } 
@@ -44,9 +47,11 @@ export function Auth() {
        async function SendToken(){
         setDisabledResent(true);
         const tempObj = GetTemp();
-        sendGAEvent({ event: 'resent', value: tempObj.email });
+        //sendGAEvent({ event: 'resent', value: tempObj.email });
+        gtag.event({ action: "resent",category:"auth",label:"token", value: tempObj.email });
         const isSent = await sendEmail(tempObj);
-        sendGAEvent({ event: 'isSent', value: isSent });
+        //sendGAEvent({ event: 'isSent', value: isSent });
+        gtag.event({ action: "isSent",category:"auth",label:"token", value: isSent ? 'ok':'not ok' });
         setResent(isSent);
        }
    return(

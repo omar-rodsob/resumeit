@@ -2,7 +2,8 @@ import { createToken } from "@/app/tools/services";
 import {sendEmail} from "@/app/api/email";
 import { FormEvent, useState } from "react"
 import { useTranslation } from "react-i18next";
-import { sendGAEvent } from '@next/third-parties/google'
+//import { sendGAEvent } from '@next/third-parties/google'
+import * as gtag from "@/app/tools/gtag";
 
 type loginProps = {
     onSent: Function;
@@ -27,16 +28,19 @@ export function Login({onSent}: loginProps){
         e.preventDefault();
         let isSent = false;
         if (!isDisabled) {
-            sendGAEvent({ event: 'loginclick', value: emailGuest });
+            //sendGAEvent({ event: 'loginclick', value: emailGuest });
+            gtag.event({ action: "loginclick",category:"login",label:"submit email", value: emailGuest });
             setDisabled(true);
             const tokenObj = await createToken(emailGuest);
             const isSent = await sendEmail(tokenObj);
             if(isSent){
-                sendGAEvent({ event: 'emailSend', value: 'ok' });
+                //sendGAEvent({ event: 'emailSend', value: 'ok' });
+                gtag.event({ action: "emailSend",category:"login",label:"is sent", value: 'ok' });
                 onSent(isSent);
                 setError(false);    
             }else{
-                sendGAEvent({ event: 'emailSend', value: 'notok' });
+                //sendGAEvent({ event: 'emailSend', value: 'notok' });
+                gtag.event({ action: "emailSend",category:"login",label:"is sent", value: 'not ok' });
                 setError(true);
                 setDisabled(false);
             }
