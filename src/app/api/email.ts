@@ -1,6 +1,7 @@
 'use server';
 
 const API_URL = process.env.API_URL;
+const api_key = process.env.API_KEY;
 
 type guestObj = {
   email: string;
