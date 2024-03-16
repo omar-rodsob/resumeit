@@ -37,11 +37,13 @@ export function Login({onSent}: loginProps){
             if(isSent){
                 setCount(0);
                 onSent(isSent);
-                setError(false);    
+                setError(false);   
+                setLoading(false); 
             }else{
                 setCount(0);
                 setError(true);
                 setDisabled(false);
+                setLoading(false); 
             }
         }
         

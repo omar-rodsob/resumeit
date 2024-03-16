@@ -1,7 +1,7 @@
 'use server';
 
 const API_URL = process.env.API_URL;
-const api_key = process.env.API_KEY;
+const API_KEY = process.env.API_KEY ? process.env.API_KEY:'';
 
 type guestObj = {
   email: string;
@@ -13,6 +13,7 @@ export async  function sendEmail(guestObj: guestObj){
     method: 'POST',
     headers: { 
         'Content-Type': 'application/json',
+        'x-api-key' : API_KEY
     },
     body: JSON.stringify(guestObj),
   };
